@@ -1,0 +1,23 @@
+<h1> Index page </h1>
+<%
+db = ["kitty", "cat", "lol"] # Initialise the lolcat dictionary 
+
+phrase = [] # Empty array for the paragraphs
+
+puts "How many paragraphs would you like?"
+requested_paragraphs = 3 # ask for how many paragraphs of text
+
+until requested_paragraphs == 0
+	paragraph_size = rand(40) + 20 # Generate a random number for the length of a paragraph
+	paragraph = [] # Clear the array for a single paragraph
+	until paragraph_size == 0
+		pull = db[rand(db.size)] 
+		paragraph.push(pull)
+		paragraph_size = paragraph_size - 1
+	end
+	phrase.push(paragraph)
+	requested_paragraphs = requested_paragraphs - 1
+end
+
+%>
+<%= p phrase %>
