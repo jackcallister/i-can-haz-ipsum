@@ -1,34 +1,3 @@
 <h1> Index page </h1>
 
-<%
-
-	db = ["kitty", "cat", "lol"] 		# Initialise the lolcat dictionary 
-
-	phrase = [] 										# Empty array for the paragraphs
-
-	requested_sentences = 3 				# Ask for how many paragraphs of text (to do)
-
-	until requested_sentences == 0
-		sentence_size = rand(40) + 20 # Generate a random number for the length of a sentence
-		init_sentence_size = sentence_size
-		sentence = [] 								# Clear the array for a sentence
-		until sentence_size == 0
-			pull = db[rand(db.size)] 
-
-			if sentence_size == init_sentence_size
-				sentence << pull.capitalize
-			elsif sentence_size == 1
-				sentence << " " + pull + "."
-			else
-				sentence << " " + pull 
-			end
-
-			sentence_size = sentence_size - 1
-		end
-		phrase.push(sentence)					# Push the current sentence into the phrase array
-		requested_sentences = requested_sentences - 1
-	end
-
-%>
-
-<% phrase.each{|n| puts %> <p><%= n %></p> <% } %> 
+<%= generate_sentence %>
