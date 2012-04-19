@@ -6,7 +6,7 @@ helpers do
   def generate_sentence
     db = ["kitty", "cat", "lol", "haz"]
 		paragraph = ""
-		requested_sentences = 3
+		requested_sentences = "#{params[:post][:requested]}".to_i
 		init_requested_sentences = requested_sentences
 
 		until requested_sentences == 0
@@ -38,5 +38,9 @@ helpers do
 end
 
 get '/' do
-	erb :index
+	erb :form
+end
+
+post '/' do
+	generate_sentence
 end
