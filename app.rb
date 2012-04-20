@@ -4,10 +4,10 @@ require 'shotgun'
 
 helpers do
   
-  def generate_paragraphs
+  def generate_paragraphs(x)
   	db = ["kitty", "cat", "lol", "haz"]
-		requested_paragraphs = "#{params[:post][:requested]}".to_i
-		paragraphs = []
+		requested_paragraphs = x
+		@paragraphs = []
 
 		until requested_paragraphs == 0 #Make paragraphs of sentences
 
@@ -41,21 +41,19 @@ helpers do
 
 			end	
 
-			paragraphs.push(paragraph)
+			@paragraphs.push(paragraph)
 			requested_paragraphs = requested_paragraphs - 1
 
 		end  
-		paragraphs
   end
 
 end
 
 get '/' do
 	erb :form
-	
 end
 
 post '/' do
-	generate_paragraphs
-
+	generate_paragraphs(params[:post][:requested].to_i)
+	@paragraphs
 end
