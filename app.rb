@@ -3,9 +3,9 @@ require 'sinatra'
 require 'shotgun'
 
 helpers do
-  
-  def generate_paragraphs(x)
-  	db = ["kitty", "cat", "lol", "haz"]
+   	 
+	def generate_paragraphs(x)
+		db = ["kitty", "cat", "lol", "haz"]
 		requested_paragraphs = x
 		@paragraphs = []
 
@@ -44,8 +44,10 @@ helpers do
 			@paragraphs.push(paragraph)
 			requested_paragraphs = requested_paragraphs - 1
 
-		end  
-  end
+		end
+		@paragraphs 
+	end
+		
 
 end
 
@@ -55,5 +57,5 @@ end
 
 post '/' do
 	generate_paragraphs(params[:post][:requested].to_i)
-	@paragraphs
+	erb	:result
 end
