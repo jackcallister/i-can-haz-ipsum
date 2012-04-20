@@ -4,7 +4,7 @@ require 'shotgun'
 
 helpers do
   
-  def generate_sentence
+  def generate_paragraphs
   	db = ["kitty", "cat", "lol", "haz"]
 		requested_paragraphs = "#{params[:post][:requested]}".to_i
 		paragraphs = []
@@ -45,7 +45,7 @@ helpers do
 			requested_paragraphs = requested_paragraphs - 1
 
 		end  
-		@paragraphs = paragraphs
+		paragraphs
   end
 
 end
@@ -56,6 +56,6 @@ get '/' do
 end
 
 post '/' do
-	generate_sentence
-	@paragraphs.each{|n| p n}
+	generate_paragraphs
+
 end
