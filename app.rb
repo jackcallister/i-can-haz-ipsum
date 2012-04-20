@@ -32,9 +32,7 @@ helpers do
 			requested_sentences = requested_sentences - 1
 		end
 		@result = paragraph.to_s
-		
   end
-  @result
 end
 
 get '/' do
